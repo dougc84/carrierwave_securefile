@@ -75,6 +75,11 @@ end
 
 And that's it!  You're good to go.
 
+# To Do
+
+* Add other encryption algorithms
+* Integrate with 'process' method in uploader to make 4 lines of code into 1
+* Refactoring and testing
 
 # Contributing to carrierwave_securefile
  
