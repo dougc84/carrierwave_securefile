@@ -1,10 +1,12 @@
 # CarrierWave_SecureFile
 
-A gem to add secured file uploading to CarrierWave.  Uses the Crypt19 gem to encrypt and decrypt files.
+A gem to add secured file uploading to CarrierWave.  Uses the Crypt19 gem with Blowfish encryption to encrypt and decrypt files.
 
-Uses blowfish for encryption.  Will look into adding other encryption types in the future.
+I needed this functionality for a project, and simply couldn't find a viable solution.  So I rolled out my own.  Then I got tired of
+dirtying up my /lib/ folder, so I made a gem out of it.  This is my first attempt at writing a gem, and for my project, it works
+pretty well.
 
-Was uploading to RackSpace Cloud Files for testing - haven't tested using local file uploads or other cloud services, but
+For personal testing, I was uploading to RackSpace Cloud Files.  I haven't tested using local file uploads or other cloud services, but
 it should work fine just the same.
 
 ## Requirements
