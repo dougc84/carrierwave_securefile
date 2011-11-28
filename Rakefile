@@ -17,9 +17,9 @@ Jeweler::Tasks.new do |gem|
   gem.name = "carrierwave_securefile"
   gem.homepage = "http://github.com/dougc84/carrierwave_securefile"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "dougc84@gmail.com"
+  gem.summary = %Q{Secure, encrypted file uploads using Crypt19 and CarrierWave}
+  gem.description = %Q{Secure, encrypted file uploads using Crypt19 and CarrierWave}
+  gem.email = "doug@dougclarkonline.com"
   gem.authors = ["Doug Clark"]
   # dependencies defined in Gemfile
 end

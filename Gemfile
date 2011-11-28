@@ -11,3 +11,6 @@ group :development do
   gem "jeweler", "~> 1.6.4"
   gem "rcov", ">= 0"
 end
+
+gem 'carrierwave', '~> 0.5.8'
+gem 'crypt19', '1.2.1'
