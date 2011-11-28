@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "carrierwave_securefile"
-  s.version = "0.0.1"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Doug Clark"]
@@ -14,15 +14,21 @@ Gem::Specification.new do |s|
   s.email = "doug@dougclarkonline.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
+    "carrierwave_securefile.gemspec",
+    "lib/carrierwave/securefile.rb",
+    "lib/carrierwave/securefile/configuration.rb",
+    "lib/carrierwave/securefile/downloader.rb",
+    "lib/carrierwave/securefile/uploader.rb",
     "lib/carrierwave_securefile.rb",
     "test/helper.rb",
     "test/test_carrierwave_securefile.rb"
