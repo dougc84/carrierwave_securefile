@@ -14,74 +14,20 @@ it should work fine just the same.
 Ruby 1.9.3 w/ Rails 3.1.3.  Realistically, it should work on Ruby 1.9.x and Rails 3.1.x, but may work on other configurations.
 It hasn't been tested.
 
-## Installation
+## Installation and Usage
 
-Add the following to your gemfile:
+Please refer to the Wiki For Installation and Usage.
 
-``` ruby
-gem 'carrierwave_securefile'
-```
+## Changes in 0.2.0
 
-...and run the obligatory
-
-```
-bundle
-```
-
-command to install.
-
-## Usage
-### Initializer
-
-Add an initializer in yourapp/config/initializers.  Name it *carrierwave_securefile.rb*.  Add the following:
-
-``` ruby
-CarrierWave::SecureFile.configure do |config|
-	config.cypher = ("Your cypher code here")[0..55]
-end
-```
-
-The cypher must be no longer than 56 characters.
-
-### Uploader
-
-``` ruby
-process :secure_file
-def secure_file
-	CarrierWave::SecureFile::Uploader.secure_file( model, self.to_s )
-end
-```
-
-This sends the model data (typically nil, but differentiates between uploads and downloads) as well as the current file name
-(self.to_s - which is needed to encrypt the file).
-
-### Downloader
-
-You will not be able to call YourUploader.asset_file (or whatever you chose with your CarrierWave uploader) directly.  Create
-a new get controller action, and use the following code.  Change where appropriate.  Assumed using an uploader named
-UserFileUploader, and a model called UserFile.
-
-``` ruby
-def file
-	# get the decrypted file from the server.  needs the uploader model and the record the file is attached to in your ORM.
-	decrypted_file = CarrierWave::SecureFile::Downloader.call( UserFileUploader, UserFile.find(params[:id]) )
-	# decrypted file is a hash set up as follows:
-	# decrypted_file[:file] - the decrypted file, hopefully saved in a tmp path, not somewhere public facing.
-	# decrypted_file[:content_type] - returns content type, if available.
-	# send the file to the user:
-	send_file decrypted_file[:file], :content_type => decrypted_file[:content_type]
-	# then immediately destroy the file.  You don't want an unencrypted file saved on your server... or do you?
-	File.unlink decrypted_file[:file]
-end
-```
-
-And that's it!  You're good to go.
+* Changed syntax for Downloader so, you know, it actually works.  Would expect a "user_file" field before, now you specify
+  the file field.
+* Added choice for encryption algorithm - Blowfish (default), Rijndael, GOST.
 
 # To Do
 
-* Add other encryption algorithms
 * Integrate with 'process' method in uploader to make 4 lines of code into 1
-* Refactoring and testing
+* Refactoring and additional testing
 
 # Contributing to carrierwave_securefile
  
