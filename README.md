@@ -16,7 +16,7 @@ It hasn't been tested.
 
 ## Installation and Usage
 
-Please refer to the Wiki For Installation and Usage.
+[Please refer to the Wiki For Installation and Usage.](https://github.com/dougc84/carrierwave_securefile/wiki/Usage)
 
 ## Changes in 0.2.0
 
