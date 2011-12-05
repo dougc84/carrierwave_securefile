@@ -6,11 +6,16 @@ module CarrierWave
 
 				def call(uploader_model, activerecord_record, file_field)
 					Rails.logger.debug "Downloading using #{CarrierWave::SecureFile.cryptable}..."
+					file = ""
 					downloader = uploader_model.new
 					uploaded_file = activerecord_record
 					filename = eval("uploaded_file.#{file_field.to_s}").to_s
-					downloader.download!(filename)
-					file = downloader.to_s
+					begin
+						downloader.download!(filename)
+						file = downloader.to_s
+					rescue Exception => e
+						file = filename
+					end
 					ext_file = file + ".x1"
 					File.rename(file,ext_file)
 					configuration = CarrierWave::SecureFile.configuration
