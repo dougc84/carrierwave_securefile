@@ -39,6 +39,10 @@ It hasn't been tested.
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
+### Thanks To
+
+[sirvine](https://github.com/sirvine) for help with the downloader.
+
 ### Copyright
 
 Copyright (c) 2011 Doug Clark. See LICENSE.txt for further details.
