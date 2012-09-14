@@ -28,7 +28,7 @@ PLATFORMS
 
 DEPENDENCIES
   bundler
-  carrierwave (~> 0.6.0)
+  carrierwave (>= 0.5.8)
   crypt19 (= 1.2.1)
   jeweler (~> 1.6.4)
   rcov
