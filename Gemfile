@@ -12,5 +12,5 @@ group :development do
   gem "rcov", ">= 0"
 end
 
-gem 'carrierwave', '>= 0.5.8'
+gem 'carrierwave', '~> 0.6.0'
 gem 'crypt19', '1.2.1'

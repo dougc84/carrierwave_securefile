@@ -10,22 +10,28 @@ module CarrierWave
 		end
 		
 		class Configuration
-			attr_accessor :cypher, :encryption_type
+			attr_accessor :cypher, :encryption_type, :aes_iv, :aes_key
 		end
 		
 		class << self
 			
+			def cypher
+				configuration = CarrierWave::SecureFile.configuration
+				configuration.cypher[0..55]
+			end
+			
 			def cryptable
 				configuration = CarrierWave::SecureFile.configuration
 				begin
-					if configuration.encryption_type.downcase == "blowfish"
+					case configuration.encryption_type.downcase.to_sym
+					when :blowfish
 						Crypt::Blowfish
-					# elsif configuration.encryption_type.downcase == "idea"
-					# 	Crypt::IDEA
-					elsif configuration.encryption_type.downcase == "rijndael"
+					when :rijndael
 						Crypt::Rijndael
-					elsif configuration.encryption_type.downcase == "gost"
+					when :gost
 						Crypt::Gost
+					when :aes
+						AESFile
 					else
 						Crypt::Blowfish
 					end

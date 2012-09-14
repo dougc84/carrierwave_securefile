@@ -21,9 +21,14 @@ module CarrierWave
 						ext_file = file + ".x1"
 						File.rename(file,ext_file)
 						configuration = CarrierWave::SecureFile.configuration
-						bf = CarrierWave::SecureFile.cryptable.new(configuration.cypher)
-						bf.decrypt_file(ext_file, file)
-						File.unlink(ext_file)
+						if configuration.cypher == AESFile
+							bf = AESFileEncrypt.new configuration.aes_key, configuration.aes_iv
+							bf.do ext_file, file
+						else
+							bf = CarrierWave::SecureFile.cryptable.new(configuration.cypher)
+							bf.decrypt_file ext_file, file
+						end
+						File.unlink ext_file
 						return { :file => file, :content_type => uploaded_file.content_type }
           else 
             # return nil if no file was found
