@@ -31,7 +31,7 @@ module CarrierWave
 					when :gost
 						Crypt::Gost
 					when :aes
-						AESFile
+						CarrierWave::SecureFile::AESFile
 					else
 						Crypt::Blowfish
 					end

@@ -6,7 +6,7 @@ module CarrierWave
 
 				def call(uploader_model, activerecord_record, file_field)
 					Rails.logger.debug "Downloading using #{CarrierWave::SecureFile.cryptable}..."
-					file = ""
+					file = nil
 					downloader = uploader_model.new
 					uploaded_file = activerecord_record
 					filename = eval("uploaded_file.#{file_field.to_s}").to_s
@@ -15,14 +15,18 @@ module CarrierWave
 						file = downloader.file.path.to_s
 					rescue Exception => e
 						Rails.logger.debug "Unable to download file: #{e}"
-						file = filename
 					end
+					
 					if File.exists? file
 						ext_file = file + ".x1"
 						File.rename(file,ext_file)
 						configuration = CarrierWave::SecureFile.configuration
-						if configuration.cypher == AESFile
-							bf = AESFileEncrypt.new configuration.aes_key, configuration.aes_iv
+						if configuration.encryption_type.downcase.to_sym == :aes
+							aes_key = configuration.aes_key
+							if activerecord_record.respond_to? :aes_key
+								aes_key = activerecord_record.aes_key
+							end
+							bf = CarrierWave::SecureFile::AESFileDecrypt.new(aes_key, configuration.aes_iv)
 							bf.do ext_file, file
 						else
 							bf = CarrierWave::SecureFile.cryptable.new(configuration.cypher)
