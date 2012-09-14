@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Doug Clark"]
-  s.date = "2012-05-27"
-  s.description = "Secure, encrypted file uploads using Crypt19, OpenSSL, and CarrierWave"
+  s.date = "2012-09-14"
+  s.description = "Secure, encrypted file uploads using Crypt19 and CarrierWave"
   s.email = "doug@dougclarkonline.com"
   s.extra_rdoc_files = [
     "LICENSE.txt",
@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   ]
   s.files = [
     ".document",
-    ".rvmrc",
     "Gemfile",
     "Gemfile.lock",
     "Icon\r",
@@ -26,9 +25,9 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
-    "carrierwave_securefile-0.1.2.gem",
     "carrierwave_securefile.gemspec",
     "lib/carrierwave/securefile.rb",
+    "lib/carrierwave/securefile/aes_file.rb",
     "lib/carrierwave/securefile/configuration.rb",
     "lib/carrierwave/securefile/downloader.rb",
     "lib/carrierwave/securefile/uploader.rb",
@@ -39,8 +38,8 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/dougc84/carrierwave_securefile"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.23"
-  s.summary = "Secure, encrypted file uploads using Crypt19, OpenSSL, and CarrierWave"
+  s.rubygems_version = "1.8.24"
+  s.summary = "Secure, encrypted file uploads using Crypt19 and CarrierWave"
 
   if s.respond_to? :specification_version then
     s.specification_version = 3
