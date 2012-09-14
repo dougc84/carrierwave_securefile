@@ -10,7 +10,7 @@ module CarrierWave
 					File.rename(file, ext_file)
 					configuration = CarrierWave::SecureFile.configuration
 					if configuration.cypher == AESFile
-						encryptor = AESFileEncrypt.new(configuration.aes_key, configuration.aes_iv)
+						encryptor = CarrierWave::SecureFile::AESFileEncrypt.new(configuration.aes_key, configuration.aes_iv)
 						encryptor.do ext_file, file
 					else
 						encryptor = CarrierWave::SecureFile.cryptable.new(CarrierWave::SecureFile.cypher)
