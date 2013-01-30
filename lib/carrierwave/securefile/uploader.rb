@@ -18,7 +18,15 @@ module CarrierWave
 						encryptor = CarrierWave::SecureFile::AESFileEncrypt.new(aes_key, configuration.aes_iv)
 						encryptor.do ext_file, file
 					else
-						encryptor = CarrierWave::SecureFile.cryptable.new(CarrierWave::SecureFile.cypher)
+
+						# Try to retrieve a cypher from model.
+						if model.respond_to? :cypher 
+							cypher = model.cypher
+						else
+							cypher = CarrierWave::SecureFile.cypher
+						end
+
+						encryptor = CarrierWave::SecureFile.cryptable.new(cypher)
 						encryptor.encrypt_file(ext_file, file)
 					end
 					File.unlink(ext_file)
