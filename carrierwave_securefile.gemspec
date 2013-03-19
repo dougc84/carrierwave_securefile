@@ -46,7 +46,7 @@ Gem::Specification.new do |s|
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
       s.add_runtime_dependency(%q<carrierwave>, [">= 0.5.8"])
-      s.add_runtime_dependency(%q<crypt19>, ["= 1.2.1"])
+      s.add_runtime_dependency(%q<crypt19-rb>, ["= 1.2.1"])
       s.add_development_dependency(%q<shoulda>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.6.4"])
