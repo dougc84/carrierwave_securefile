@@ -53,7 +53,7 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rcov>, [">= 0"])
     else
       s.add_dependency(%q<carrierwave>, [">= 0.5.8"])
-      s.add_dependency(%q<crypt19>, ["= 1.2.1"])
+      s.add_dependency(%q<crypt19-rb>, ["= 1.2.1"])
       s.add_dependency(%q<shoulda>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
       s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
@@ -61,7 +61,7 @@ Gem::Specification.new do |s|
     end
   else
     s.add_dependency(%q<carrierwave>, [">= 0.5.8"])
-    s.add_dependency(%q<crypt19>, ["= 1.2.1"])
+    s.add_dependency(%q<crypt19-rb>, ["= 1.2.1"])
     s.add_dependency(%q<shoulda>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
     s.add_dependency(%q<jeweler>, ["~> 1.6.4"])
