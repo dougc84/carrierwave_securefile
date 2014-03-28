@@ -9,7 +9,7 @@ module CarrierWave
           configuration = CarrierWave::SecureFile.configuration
           if configuration.encryption_type.downcase.to_sym == :aes
             aes_key = configuration.aes_key
-            if model.respond_to? :aes_key
+            if model.aes_key.nil? || model.aes_key == ''
               digest = Digest::SHA256.new
               digest.update(file.to_s)
               model.aes_key = aes_key = digest.to_s
