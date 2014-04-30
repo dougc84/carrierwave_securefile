@@ -7,7 +7,6 @@ module CarrierWave
           ext_file = file + ".x1"
           File.rename(file, ext_file)
           configuration = CarrierWave::SecureFile.configuration
-          debugger;1
           if configuration.encryption_type.downcase.to_sym == :aes
             aes_key = configuration.aes_key
             if model.respond_to? :aes_key and ( model.aes_key.nil? || model.aes_key == '' )
