@@ -7,12 +7,12 @@ module CarrierWave
           uploader_instance = uploader_instance.clone
           begin
             uploader_instance.cache_stored_file!
-            @file = uploader_instance.to_s
+            @file = uploader_instance.file.file
           rescue Exception => e
             Rails.logger.debug "Unable to download/copy file: #{e}"
           end
           unless File.exists? @file.to_s
-            Rails.logger.debug "Unable to find the target file."
+            Rails.logger.debug "Unable to find the target file #{@file.to_s}."
             return nil
           end
           ext_file = @file + ".x1"
@@ -20,6 +20,10 @@ module CarrierWave
           configuration = CarrierWave::SecureFile.configuration
           if configuration.encryption_type.downcase.to_sym == :aes
             aes_key = uploader_instance.model.aes_key rescue configuration.aes_key
+            unless aes_key
+              File.rename ext_file, @file
+              return { :file => @file, :content_type => uploader_instance.file.content_type }
+            end
             bf      = CarrierWave::SecureFile::AESFileDecrypt.new(aes_key, configuration.aes_iv)
             bf.do ext_file, @file
           else
