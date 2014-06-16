@@ -14,7 +14,7 @@ module CarrierWave
               digest.update(file.to_s)
               model.aes_key = aes_key = digest.to_s
             end
-            unless model.pepper.nil?
+            if model.respond_to?(:pepper) && model.pepper
               aes_key = model.pepper
             end
             encryptor = CarrierWave::SecureFile::AESFileEncrypt.new(aes_key, configuration.aes_iv)
