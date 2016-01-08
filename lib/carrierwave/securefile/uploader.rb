@@ -10,9 +10,7 @@ module CarrierWave
           if configuration.encryption_type.downcase.to_sym == :aes
             aes_key = configuration.aes_key
             if model.respond_to? :aes_key and ( model.aes_key.nil? || model.aes_key == '' )
-              digest = Digest::SHA256.new
-              digest.update(file.to_s)
-              model.aes_key = aes_key = digest.to_s
+              model.aes_key = aes_key = SecureRandom.random_bytes(32)
             end
             if model.respond_to?(:pepper) && model.pepper
               aes_key = model.pepper
