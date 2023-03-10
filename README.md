@@ -58,7 +58,7 @@ Releases happen in CircleCI when a tag is pushed to the repository.
 
 To create a release, you will need to do the following:
 
-1. Change the version in `lib/gr_send_with_us/version.rb` to the new version and create a PR with the change.
+1. Change the version in `carrierwave_securefile.gemspec` to the new version and create a PR with the change.
 1. Once the PR is merged, switch to the master branch and `git pull`.
 1. `git tag <version from version.rb>`
 1. `git push origin --tags`
