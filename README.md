@@ -52,3 +52,16 @@ It hasn't been tested.  I'm currently using this with CarrierWave 0.6.2, Rails 3
 
 Copyright (c) 2011-2012 Doug Clark. See LICENSE.txt for further details.
 
+## How to Create a Release
+
+Releases happen in CircleCI when a tag is pushed to the repository.
+
+To create a release, you will need to do the following:
+
+1. Change the version in `lib/gr_send_with_us/version.rb` to the new version and create a PR with the change.
+1. Once the PR is merged, switch to the master branch and `git pull`.
+1. `git tag <version from version.rb>`
+1. `git push origin --tags`
+
+CircleCI will see the tag push, build, and release a new version of the library.
+
